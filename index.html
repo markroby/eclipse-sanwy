@@ -19,13 +19,7 @@
       border-bottom: 2px solid #ffd369;
       box-shadow: 0 4px 20px rgba(0,0,0,0.8);
     }
-    header h1 {
-      font-size: 2.8em;
-      color: #ffd369;
-      margin: 0;
-      text-shadow: 0 0 15px rgba(255,211,105,0.8);
-      font-family: 'Scheherazade', serif;
-    }
+
     main {
       padding: 30px 20px;
       max-width: 1100px;
@@ -107,13 +101,276 @@
         max-width: 100%;
       }
     }
+
+    /* ------------------ Popup (mobile-friendly & large text) ------------------ */
+    /* This block overrides any older popup styles and is optimized for phones */
+    #popup-donation {
+      display: none; /* hidden by default */
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.82);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      direction: rtl;
+    }
+
+    .popup-box {
+      background: linear-gradient(180deg,#0b0b0b,#141414);
+      color: #fff8e6;
+      border: 2px solid rgba(255,211,105,0.18);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.75);
+      border-radius: 16px;
+      padding: 20px 18px;
+      max-width: 520px;
+      width: 100%;
+      position: relative;
+      text-align: center;
+      font-family: 'Scheherazade', 'Amiri', serif;
+      animation: popupIn 320ms cubic-bezier(.2,.9,.2,1);
+    }
+
+    .popup-box h2 {
+      margin: 0 0 12px 0;
+      color: #ffd369;
+      font-size: 2.05rem; /* big title for mobile */
+      line-height: 1.05;
+      text-shadow: 0 0 18px rgba(255,211,105,0.6);
+    }
+
+    #popup-close {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 34px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    #popup-close:hover { color: #ffd369; }
+
+    .popup-text p {
+      font-size: 1.2rem; /* larger body text */
+      margin: 10px 0;
+      color: #fff6e8;
+    }
+
+    .link-row { margin-top: 14px; }
+    .link-row a {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 1.18rem;
+      font-weight: 800;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.6);
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    }
+    .link-row a:active { transform: translateY(1px); }
+
+    /* InstaPay button style */
+    #instapay-link {
+      background: linear-gradient(180deg,#ffd369,#f4c64a);
+      color: #111;
+      display: inline-block;
+      min-width: 220px;
+      text-align: center;
+    }
+
+    /* WhatsApp button style */
+    #whatsapp-link {
+      background: linear-gradient(180deg,#25D366,#1aa64b);
+      color: #fff;
+      display: inline-block;
+      min-width: 220px;
+      text-align: center;
+    }
+
+    @keyframes popupIn {
+      from { transform: translateY(10px) scale(0.98); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    @media (max-width: 480px) {
+      .popup-box { padding: 18px 14px; border-radius: 12px; }
+      .popup-box h2 { font-size: 1.6rem; }
+      .popup-text p { font-size: 1.05rem; }
+      .link-row a { width: 80%; display: block; margin: 8px 0; }
+      #popup-close { font-size: 30px; left: 8px; }
+    }
+    /* -------------------------------------------------------------------------- */
+
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Scheherazade&display=swap" rel="stylesheet">
 </head>
 <body>
+  <style>
+    header {
+      background: #000; /* خلفية سوداء */
+      color: #fff;
+      padding: 20px;
+    }
+  
+    header h1 {
+      margin: 15px 0 0 0;
+      text-align: center;
+      
+      
+      font-size: 2.8em;
+      color: #ffd369;
+      margin: 0;
+      text-shadow: 0 0 15px rgba(255,211,105,0.8);
+      font-family: 'Scheherazade', serif;
+      
+    
+    }
+    header h1 img{
+      width: 60%;
+    }
+    .logo-left img,
+    .logo-right img {
+      max-height: 100px;
+    }
+  
+    /* ديسكتوب */
+    @media (min-width: 769px) {
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      header h1 {
+        flex-grow: 1;
+        text-align: center;
+        font-size: 3.5rem;
+      }
+      header h1 img{
+      width: 20%;
+      text-align: left;
+    }
+      .logo-left {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+      }
+      .logo-right {
+        display: flex;
+        align-items: center;
+      }
+    }
+  
+    /* موبايل */
+    @media (max-width: 768px) {
+      header {
+        text-align: center;
+      }
+      .logo-left, .logo-right {
+        display: inline-flex;
+        gap: 10px;
+        margin: 0 auto;
+      }
+      header h1 {
+        font-size: 2.5rem; /* أكبر من العادي */
+      }
+      .logos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+    }
+  </style>
+  
   <header>
-    <h1>Eclipse</h1>
+    <div class="logos">
+      <!-- 3 صور الشمال -->
+      <div class="logo-left">
+        
+        <img src="Untitled design (3).png" alt="">
+        <img src="Untitled design (4).png" alt="">
+        <img src="2.png" alt="">
+        <img src="Untitled design (6).png" alt="">
+      </div>
+  
+
+    </div>
+  
+    <!-- العنوان -->
+    <h1><img src="logooooooo.png" ></h1>
   </header>
+  
+  
+
+  <!-- === Popup Donation (Arabic) - Mobile friendly & large text === -->
+  <div id="popup-donation" aria-hidden="true">
+    <div class="popup-box" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-desc">
+      <button id="popup-close" aria-label="إغلاق">&times;</button>
+      <h2 id="popup-title">🔔 <strong>تبرع Sanawy</strong> 🔔</h2>
+      <div id="popup-desc" class="popup-text">
+        <p>📌 يمكنك إرسال تبرعك بأمان عبر <strong>InstaPay</strong> من خلال الرابط:</p>
+        <p class="link-row"><a id="instapay-link" href="https://ipn.eg/S/peter.ashraf.242/instapay/0HU4Wz" target="_blank" rel="noopener">👉 اضغط هنا للتبرع عبر InstaPay</a></p>
+        <p style="font-size:1.05rem; margin-top:10px;">المستلم: <strong>peter.ashraf.242@instapay</strong><br>(مدعوم من InstaPay ✅)</p>
+        <p style="font-size:1.05rem; margin-top:12px;">بعد الإرسال، يُرجى <strong>أخذ لقطة شاشة لعملية الدفع</strong> وإرسالها مباشرة إلى الخادم على واتساب ليتم تأكيد التبرع. 📩</p>
+        <p class="link-row"><a id="whatsapp-link" href="#01095405160" target="_blank" rel="noopener">📲 إرسال لقطة الشاشة على واتساب</a></p>
+      </div>
+    </div>
+  </div>
+  <!-- === End Popup Donation === -->
+
+  <script>
+    (function(){
+      const popup = document.getElementById('popup-donation');
+      const closeBtn = document.getElementById('popup-close');
+      const whatsappLinkEl = document.getElementById('whatsapp-link');
+      const instapayLinkEl = document.getElementById('instapay-link');
+
+      // ====== CONFIG (تغيير هنا إذا احتجت) ======
+      // ضع رقم الخادم بصيغة دولية بدون علامة +، مثال لمصر: "201234567890"
+      const servantPhone = "201234567890"; // ← غيّر هذا الرقم لرقم الخادم
+      // InstaPay link
+      const instapayURL = "https://ipn.eg/S/peter.ashraf.242/instapay/0HU4Wz";
+      // نص الرسالة الجاهزة التي سيتم إرسالها في واتساب بعد الضغط
+      const whatsappMessage = "مرحبًا، لقد قمت بإرسال تبرع السنوي عبر InstaPay. مرفق صورة التحويل.";
+      // ============================================
+
+      // تأكد من ضبط الروابط حسب المتغيرات
+      instapayLinkEl.href = instapayURL;
+      whatsappLinkEl.href = `https://wa.me/${servantPhone}?text=${encodeURIComponent(whatsappMessage)}`;
+
+      // إظهار وإخفاء
+      function showPopup(){
+        popup.style.display = 'flex';
+        popup.setAttribute('aria-hidden','false');
+      }
+      function hidePopup(){
+        popup.style.display = 'none';
+        popup.setAttribute('aria-hidden','true');
+      }
+
+      // أغلق عند الضغط على زر الإغلاق أو الضغط خارج المربع
+      closeBtn.addEventListener('click', hidePopup);
+      popup.addEventListener('click', function(e){ if(e.target === popup) hidePopup(); });
+
+      // عرض أول مرة فور تحميل الصفحة ثم كل 10 دقائق
+      window.addEventListener('load', function(){
+        try { showPopup(); } catch(e){}
+        setInterval(showPopup, 600000); // 600000 ms = 10 minutes
+      });
+
+      // اغلاق على ESC لسهولة الاستخدام
+      window.addEventListener('keydown', function(e){ if(e.key === 'Escape') hidePopup(); });
+
+      // تحسين: افتح رابط الواتساب في نفس التطبيق على الموبايل أو واتساب ويب
+      whatsappLinkEl.addEventListener('click', function(){
+        // لا حاجة لتغيير - الرابط جاهز
+      });
+
+    })();
+  </script>
 
   <main>
     <!-- Scene 1: أمير -->
@@ -167,10 +424,68 @@
     <div class="verse"><h2>رؤيا 21:23</h2><p>«وَالْمَدِينَةُ لَا تَحْتَاجُ إِلَى الشَّمْسِ وَلَا إِلَى الْقَمَرِ…»</p></div>
     <div class="verse"><h2>بطرس الأولى 1:19</h2><p>«وَعِنْدَنَا الْكَلِمَةُ النَّبَوِيَّةُ… كَمَا إِلَى سِرَاجٍ مُنِيرٍ فِي مَوْضِعٍ مُظْلِمٍ…»</p></div>
     <div class="verse"><h2>أفسس 5:11–13</h2><p>«لا تشتَرِكوا في أعمالِ الظُّلمَةِ غَيرِ المُثمِرَةِ بل بالحَريِّ وبِّخوها… لأنَّ كُلَّ ما أُظهِرَ فهو نورٌ.»</p></div>
+<br><br><br><br><br>
+<!-- Conclusion Section -->
+<section id="conclusion">
+  <div class="verse">
+    <h2>الخاتمة</h2>
+    <div id="conclusion-content"></div>
+  </div>
+</section>
+
+<script>
+  const today = new Date();
+  const showDate = new Date("2025-09-27");
+
+  const conclusionContent = document.getElementById("conclusion-content");
+
+  if (today >= showDate) {
+    // النص الأصلي للخاتمة
+    conclusionContent.innerHTML = `
+      <p>
+      يُشَبَّه الطريقُ الى مملكة النور برجُل خَرَج في ليل مُظلمة، حاملاً مصباحاً مُنيراً، وقاصداً العودة الى بيته..
+      ولكن طريق العودة مُظلِم ولا يمكن للمُجتاز فيه أن يرى بيته من نقطة الابتداء حيثما هو واقف..
+      ولا يمكنه رؤية ما قد يعترضه في الطريق..
+      إلا أن مصباح النور يكشف له مساحةً من الرؤية، ولا سبيل لكشف المزيد من الطريق إلا بمزيد من السير فيه..
+      فلحظة التوقف عن السير هي نفسها اللحظة التي يزداد فيها غموض الطريق،
+      ويكثُر فيها التساؤل بشأن ما يُخفيه..
+      ولحظة مواصلة السير هي نفسها اللحظة التي يدرك فيها السائر ما في الطريق..
+      <br><br>
+      لمصباح النور القدرة على كشف الطريق دائماً، وللرجل بيت في انتظاره دائماً.
+      فهكذا هو أيضاً طريق الحياة والحق.. طريق العودة الى مملكة النور..
+      يُكتشَف بقدر السير فيه.. نكتشفه بقدر ما نحياه وليس بقدر ما نفكر فيه ونخطط له..
+      طريق طويل.. والخطوة الأولى فيه تكشف النقاب عن التالية..
+      <br><br>
+      إن العودة الى مملكة النور تستوجب ثورة الإنسان ضد ارتخاء النفس، ضد اليأس، ضد الفشل، ضد الحزن..
+      تستوجب ثورة ضد الألم، ضد حدود الإدراك الضيقة، ضد الظلمة..
+      ولكن الثورات، وكعادتها، تُكلف الثوار جهاداً حتى الدم،
+      ولا خلاص ولا افتداء إلا بالدم..
+      <br><br>
+      سلام لكل الباحثين عن نور الحياة.. لكل التائهين عنه والمشتاقين إليه..
+      سلام لكل الغافلين عنه، ولكل المتغافلين عنه..
+      لكل من عرفوه، ولكل من ظنوا أنهم عرفوه..
+      ولكل من لم يعرفوه، ولكل من تمنوا لو عرفوه..
+      سلام لكل من لم يحتمل ألمه، ولكل من لم يُختبر فرحه..
+      سلام لكل من يرى نفسه غير أهل له، لكل اليائسين بدونه،
+      ولكل لاجئ وضال دون سكناه..
+      <br><br>
+      أيها النور، نلتمس مراحَك.. نلتحف بك.. فأنت المحيط بالكُل.. وأنت الجواب لكل من ناداك...
+      </p>
+    `;
+  } else {
+    // الرسالة اللي تظهر قبل التاريخ المحدد
+    conclusionContent.innerHTML = `
+      <p style="color: gray; font-style: italic;">
+        ✨ الخاتمة ستظهر في يوم 27/9/2025 ✨
+      </p>
+    `;
+  }
+</script>
+
   </main>
 
   <footer>
-    <p>© 2025 <span>Eclipse – Sanawy</span></p>
+    <p>© 2025 <span>Eclipsia – Sanawy</span></p>
   </footer>
 </body>
 </html>
